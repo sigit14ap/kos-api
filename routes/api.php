@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Owner\KostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,29 @@ Route::prefix('v1')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('register', [AuthController::class, 'register']);
         Route::post('login', [AuthController::class, 'login']);
+    });
+
+    Route::middleware(['auth:api'])->group(function () {
+
+        /**
+         * Owner route
+         * @link api/v1/owner
+        */
+        Route::prefix('owner')->group(function () {
+
+            /**
+             * Kost route for owner
+             * @link api/v1/owner/kost
+            */
+            Route::prefix('kost')->group(function () {
+                Route::get('/', [KostController::class, 'paginate']);
+                Route::post('/', [KostController::class, 'store']);
+                Route::get('/{id}', [KostController::class, 'detail']);
+                Route::put('/{id}', [KostController::class, 'update']);
+                Route::delete('/{id}', [KostController::class, 'delete']);
+            });
+
+        });
     });
     
 });

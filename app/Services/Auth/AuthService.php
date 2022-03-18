@@ -5,7 +5,6 @@ namespace App\Services\Auth;
 use App\Services\Auth\Interfaces\AuthServiceInterface;
 use App\Models\User;
 use App\Dto\Auth\RegisterDto;
-use DB;
 
 class AuthService implements AuthServiceInterface
 {

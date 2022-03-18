@@ -3,7 +3,7 @@
 namespace App\Services\Auth\Interfaces;
 
 use App\Models\User;
-use  App\Dto\Auth\RegisterDto;
+use App\Dto\Auth\RegisterDto;
 
 interface AuthServiceInterface
 {
