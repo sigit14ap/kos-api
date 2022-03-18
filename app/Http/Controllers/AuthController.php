@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
 use App\Services\Auth\Interfaces\AuthServiceInterface;
 use App\Helpers\Response;
 use App\Dto\Auth\RegisterDto;
@@ -34,8 +33,6 @@ class AuthController extends Controller
             'user_type' =>  $request->user_type,
             'credit'    =>  $request->user_type == 'owner' ? 0 : ($request->user_type == 'premium' ? 40 : 20),
         ]));
-
-        event(new Registered($user));
 
         return Response::successWithDataResponse('Register success. You can login now', $user);
     }
