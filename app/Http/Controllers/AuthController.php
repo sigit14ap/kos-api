@@ -31,7 +31,8 @@ class AuthController extends Controller
             'name'      =>  $request->name,
             'email'     =>  $request->email,
             'password'  =>  Hash::make($request->password),
-            'user_type' =>  $request->user_type
+            'user_type' =>  $request->user_type,
+            'credit'    =>  $request->user_type == 'owner' ? 0 : ($request->user_type == 'premium' ? 40 : 20),
         ]));
 
         event(new Registered($user));

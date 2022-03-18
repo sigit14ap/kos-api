@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Owner\KostController;
+use App\Http\Controllers\User\KostController as UserKostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::prefix('v1')->group(function () {
          * Owner route
          * @link api/v1/owner
         */
-        Route::prefix('owner')->group(function () {
+        Route::middleware(['IsOwner'])->prefix('owner')->group(function () {
 
             /**
              * Kost route for owner
@@ -45,6 +46,24 @@ Route::prefix('v1')->group(function () {
                 Route::get('/{id}', [KostController::class, 'detail']);
                 Route::put('/{id}', [KostController::class, 'update']);
                 Route::delete('/{id}', [KostController::class, 'delete']);
+            });
+
+        });
+
+        /**
+         * User route
+         * @link api/v1/user
+        */
+        Route::prefix('user')->group(function () {
+
+            /**
+             * Kost route for user
+             * @link api/v1/user/kost
+            */
+            Route::prefix('kost')->group(function () {
+                Route::get('/search', [UserKostController::class, 'search']);
+                Route::get('/detail/{id}', [UserKostController::class, 'detail']);
+                Route::post('/ask-availability/{id}', [UserKostController::class, 'ask_availability'])->middleware('IsUser');
             });
 
         });

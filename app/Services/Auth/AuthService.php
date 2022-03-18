@@ -19,7 +19,8 @@ class AuthService implements AuthServiceInterface
             'name'      =>  $attribute->name,
             'email'     =>  $attribute->email,
             'password'  =>  $attribute->password,
-            'user_type' =>  $attribute->user_type
+            'user_type' =>  $attribute->user_type,
+            'credit'    =>  $attribute->credit
         ]);
     }
 }

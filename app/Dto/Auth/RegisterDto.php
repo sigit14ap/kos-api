@@ -10,4 +10,5 @@ class RegisterDto extends DataTransferObject
     public string $email;
     public string $password;
     public string $user_type;
+    public int $credit;
 }

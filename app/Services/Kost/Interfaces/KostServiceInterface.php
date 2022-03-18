@@ -8,7 +8,9 @@ use App\Dto\Kost\{
     StoreDto,
     UpdateDto,
     DeleteDto,
-    FindDto
+    FindDto,
+    SearchDto,
+    AskAvailabilityDto
 };
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -48,5 +50,26 @@ interface KostServiceInterface
      * @return  Kost
      */
     public function findForOwner(FindDto $attribute) : Kost;
+
+    /**
+     * Search kost data
+     * @param   SearchDto $attribute
+     * @return  LengthAwarePaginator
+     */
+    public function search(SearchDto $attribute) : LengthAwarePaginator;
+
+    /**
+     * Find kost data for user
+     * @param   int $id
+     * @return  Kost
+     */
+    public function findForUser(int $id) : Kost;
+
+    /**
+     * Ask availability
+     * @param   AskAvailabilityDto $attribute
+     * @return  bool
+     */
+    public function askAvailability(AskAvailabilityDto $attribute) : bool;
 
 }
