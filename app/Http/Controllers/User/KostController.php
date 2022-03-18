@@ -79,7 +79,7 @@ class KostController extends Controller
     {
         
         if($this->user->credit < 5){
-            return Response::withCode(403, 'Credit is not enough');
+            return Response::withCode(400, 'Credit is not enough');
         }
 
         try{
