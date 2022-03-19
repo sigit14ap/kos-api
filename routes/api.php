@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Owner\KostController;
+use App\Http\Controllers\Owner\DashboardController;
 use App\Http\Controllers\User\KostController as UserKostController;
 
 /*
@@ -35,6 +36,14 @@ Route::prefix('v1')->group(function () {
          * @link api/v1/owner
         */
         Route::middleware(['IsOwner'])->prefix('owner')->group(function () {
+
+            /**
+             * Dashboard route for owner
+             * @link api/v1/owner/dashboard
+            */
+            Route::prefix('dashboard')->group(function () {
+                Route::get('/summary', [DashboardController::class, 'summary']);
+            });
 
             /**
              * Kost route for owner

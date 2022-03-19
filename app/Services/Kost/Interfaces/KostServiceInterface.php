@@ -72,4 +72,11 @@ interface KostServiceInterface
      */
     public function askAvailability(AskAvailabilityDto $attribute) : bool;
 
+    /**
+     * Summary data
+     * @param   int $user_id
+     * @return  array
+     */
+    public function summary(int $user_id) : array;
+
 }

@@ -175,4 +175,19 @@ class KostService implements KostServiceInterface
             throw $th;
         }
     }
+
+    /**
+     * Summary data
+     * @param   int $user_id
+     * @return  array
+     */
+    public function summary(int $user_id) : array
+    {
+        return [
+            'total_kost'                =>  Kost::where('user_id', '=', $user_id)->count(),
+            'total_ask_availability'    =>  RoomAvailability::whereHas('kost', function($query) use($user_id) {
+                $query->where('user_id', '=', $user_id);
+            })->count(),
+        ];
+    }
 }

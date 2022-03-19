@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "dd311a36-a87c-48af-95ad-84fb86e0fe0a",
+		"name": "Kost API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/register?name=test&email=sigit1418@gmail.com&user_type=regular&password=00000000tesT@&password_confirmation=00000000tesT@",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test"
+								},
+								{
+									"key": "email",
+									"value": "sigit1418@gmail.com"
+								},
+								{
+									"key": "user_type",
+									"value": "regular",
+									"description": "Required in owmer, regular, premium"
+								},
+								{
+									"key": "password",
+									"value": "00000000tesT@",
+									"description": "Required | minimal: 8 | contain: uppercase, lowercase,symbol and numbers"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "00000000tesT@",
+									"description": "Required | minimal: 8 | contain: uppercase, lowercase,symbol and numbers"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/login?email=sigit1418@gmail.com&password=00000000tesT@",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "sigit1418@gmail.com",
+									"description": "Required | email"
+								},
+								{
+									"key": "password",
+									"value": "00000000tesT@",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Owner",
+			"item": [
+				{
+					"name": "Kost",
+					"item": [
+						{
+							"name": "List Kost",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/owner/kost?per_page=20&page=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"owner",
+										"kost"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "20"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Kost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/owner/kost?name=Kost Jakarta&location=jakarta&price=50000",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"owner",
+										"kost"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Kost Jakarta"
+										},
+										{
+											"key": "location",
+											"value": "jakarta"
+										},
+										{
+											"key": "price",
+											"value": "50000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Kost",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/owner/kost/1?name=Kost Jakarta barat 2&location=jakarta&price=50000",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"owner",
+										"kost",
+										"1"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Kost Jakarta barat 2"
+										},
+										{
+											"key": "location",
+											"value": "jakarta"
+										},
+										{
+											"key": "price",
+											"value": "50000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Kost",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/owner/kost/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"owner",
+										"kost",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail Kost",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/owner/kost/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"owner",
+										"kost",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Dashboard",
+					"item": [
+						{
+							"name": "Summary",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/owner/dashboard/summary",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"owner",
+										"dashboard",
+										"summary"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Kost",
+					"item": [
+						{
+							"name": "Search Kost",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/kost/search?per_page=20&page=1&search=timur&min_price=10000&max_price=50000&sort_price=ASC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"kost",
+										"search"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "20"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "search",
+											"value": "timur",
+											"description": "Search by name or location"
+										},
+										{
+											"key": "min_price",
+											"value": "10000"
+										},
+										{
+											"key": "max_price",
+											"value": "50000"
+										},
+										{
+											"key": "sort_price",
+											"value": "ASC",
+											"description": "ASC or DESC | Default ASC"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail Kost",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/kost/detail/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"kost",
+										"detail",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ask Room Availability",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/kost/ask-availability/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"kost",
+										"ask-availability",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDc1NzMxNjUsImV4cCI6MTY0NzU3Njc2NSwibmJmIjoxNjQ3NTczMTY1LCJqdGkiOiJFNXZjUFJ1R3ZSbkZkbHRVIiwic3ViIjozLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.eiLJO_vNdi3JGwDGG3PfV5NmGzVQg1hILiWaMKyLRCc",
+			"type": "string"
+		}
+	]
+}
