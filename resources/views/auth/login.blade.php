@@ -69,8 +69,15 @@
                     password: password
                 },
                 success: function (response){
-                    localStorage.setItem('access_token', response.data.access_token);
-                    window.location.replace("{{url('/dashboard')}}");
+
+					if(response.data.user.user_type === 'owner'){
+						localStorage.setItem('access_token', response.data.access_token);
+                    	window.location.replace("{{url('/dashboard')}}");
+					}else{
+						$('#btn-login').removeClass('disabled');
+						alert('You are not owner');
+					}
+                   
                 },
                 error: function (response) {
                     $('#btn-login').removeClass('disabled');

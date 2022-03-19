@@ -182,6 +182,7 @@
                 $('#text_total_ask_availability').html(data.total_ask_availability);
             },
             error: function (response) {
+                localStorage.removeItem('access_token')
                 window.location.replace("{{url('/')}}");
             }
         });
